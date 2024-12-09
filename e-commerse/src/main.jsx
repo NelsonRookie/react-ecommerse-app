@@ -8,11 +8,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Routes.........
 import Home from "./routes/Home.jsx";
 import ErrorPage from "./routes/ErrorPage.jsx";
-import TopRated from "./routes/TopRated.jsx";
+// import TopRated from "./routes/TopRated.jsx";
 import KidsWear from "./routes/KidsWear.jsx";
 import MensWear from "./routes/MensWear.jsx";
 import Electronics from "./routes/Electronics.jsx";
 import Hero from "./components/Hero.jsx";
+
+import TopProducts from "./components/TopProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
 
   {
     path: "/top",
-    element: <TopRated />,
+    element: <TopProducts />,
   },
   {
     path: "/kids",

@@ -1,7 +1,10 @@
-import { IoCloseOutline } from "react-icons/io5"; // Ensure this import is correct
+import { IoCloseOutline } from "react-icons/io5";
+import { BsCartPlusFill } from "react-icons/bs";
 import PropTypes from "prop-types";
 
-export default function PopUpForm({ orderPopUp, setOrderPopUp }) {
+export default function PopUpForm({ orderPopUp, setOrderPopUp, product }) {
+  if (!product) return null; // Prevent rendering if no product is selected
+
   return (
     <>
       {orderPopUp && (
@@ -15,34 +18,32 @@ export default function PopUpForm({ orderPopUp, setOrderPopUp }) {
                 <div>
                   <h1 className="text-lg font-bold">Order Now</h1>
                 </div>
-
                 <IoCloseOutline
                   className="text-2xl cursor-pointer"
                   onClick={() => setOrderPopUp(false)}
                 />
               </div>
-              {/* Form Section */}
-              <div className="mt-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 py-2 px-3 mb-4"
+              {/* Product Details */}
+              <div className="mt-4 text-center">
+                <img
+                  src={product.img}
+                  alt={product.title}
+                  className="w-[150px] mx-auto mb-4"
                 />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 py-2 px-3 mb mb-4"
-                />
-                <input
-                  type="text"
-                  placeholder="Address"
-                  className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 py-2 px-3 mb mb-4"
-                />
+                <h2 className="text-lg font-bold">{product.title}</h2>
+                <p className="text-gray-500">{product.description}</p>
+                <p className="text-lg font-bold mt-2">{product.price}</p>
               </div>
-              <div className="flex justify-center">
-                <button className="bg-gradient-to-r from-light-primary to-light-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full">
-                  {" "}
-                  Order Now
+              {/* Add to Cart Button */}
+              <div className="flex w-full mt-5 gap-1">
+                <button
+                  onClick={() => alert("Feature is not yet available")}
+                  className="w-full gap-2 flex items-center rounded-md justify-center bg-gradient-to-r from-light-primary to-light-secondary hover:opacity-80 duration-200 text-slate-50 py-3 px-4"
+                >
+                  <BsCartPlusFill size={20} />
+                  <span className="text-sm font-bold text-slate-50">
+                    Add to Cart
+                  </span>
                 </button>
               </div>
             </div>
@@ -54,6 +55,7 @@ export default function PopUpForm({ orderPopUp, setOrderPopUp }) {
 }
 
 PopUpForm.propTypes = {
-  orderPopUp: PropTypes.any,
-  setOrderPopUp: PropTypes.any,
+  orderPopUp: PropTypes.bool.isRequired,
+  setOrderPopUp: PropTypes.func.isRequired,
+  product: PropTypes.object, // Accept the selected product
 };

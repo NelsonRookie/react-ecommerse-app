@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 
@@ -30,7 +32,7 @@ const ImageList = [
   },
 ];
 
-export default function Hero({ handleOrderPopUp }) {
+export default function Hero() {
   const settings = {
     dots: true,
     arrows: false,
@@ -74,15 +76,16 @@ export default function Hero({ handleOrderPopUp }) {
                   >
                     {data.description}
                   </p>
-                  <button
-                    onClick={handleOrderPopUp}
-                    data-aos="fade-up"
-                    data-aos-duration="700"
-                    data-aos-delay="300"
-                    className="mt-6 sm:w-[20%] md:w-[30%] bg-gradient-to-r from-light-primary to-light-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full "
-                  >
-                    Order Now
-                  </button>
+                  <Link to={"/top"}>
+                    <button
+                      data-aos="fade-up"
+                      data-aos-duration="700"
+                      data-aos-delay="300"
+                      className="mt-6 sm:w-[20%] md:w-[30%] bg-gradient-to-r from-light-primary to-light-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full "
+                    >
+                      Order Now
+                    </button>
+                  </Link>
                 </div>
 
                 {/* Image section */}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-//components............................
+// Components
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
@@ -10,17 +10,20 @@ import Subscribe from "../components/Subscribe";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 
-//animation library
+// Animation Library
 import AOS from "aos";
 import "aos/dist/aos.css";
 import PopUpForm from "../components/PopUpForm";
 
 export default function Home() {
   const [orderPopUp, setOrderPopUp] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null); // For the clicked product
 
-  const handleOrderPopUp = () => {
-    setOrderPopUp(!orderPopUp);
+  const handleOrderPopUp = (product) => {
+    setSelectedProduct(product); // Set the product data
+    setOrderPopUp(true); // Open the modal
   };
+
   useEffect(() => {
     AOS.init({
       offset: 100,
@@ -32,16 +35,21 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-dark-background dark:text-dark-text duration-200 ">
+    <div className="bg-white dark:bg-dark-background dark:text-dark-text duration-200">
       <Navbar handleOrderPopUp={handleOrderPopUp} />
       <Hero handleOrderPopUp={handleOrderPopUp} />
       <Products />
-      <TopProducts handleOrderPopUp={handleOrderPopUp} />
+      <TopProducts handleOrderPopUp={handleOrderPopUp} /> {/* Pass handler */}
       <Banner />
       <Subscribe />
       <Products />
       <Testimonials />
-      <PopUpForm orderPopUp={orderPopUp} setOrderPopUp={setOrderPopUp} />
+      {/* Modal for order */}
+      <PopUpForm
+        orderPopUp={orderPopUp}
+        setOrderPopUp={setOrderPopUp}
+        product={selectedProduct} // Pass selected product to modal
+      />
       <Footer />
     </div>
   );
