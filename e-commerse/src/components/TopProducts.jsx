@@ -43,7 +43,7 @@ export default function TopProducts({ handleOrderPopUp }) {
     <div className="dark:bg-dark-background dark:text-dark-text sm:p-10 sm:mb-20">
       <div className="flex flex-col items-center sm:mx-aut  o">
         {/* Header section */}
-        <div className="sm:ml-20 self-start mb-32">
+        <div className="max-w-sm:ml-20 md:ml-48 self-start mb-32">
           <p
             data-aos="fade-up"
             className="dark:text-light-primary text-light-primary text-sm sm:text-xl font-bold"
@@ -64,7 +64,7 @@ export default function TopProducts({ handleOrderPopUp }) {
         </div>
 
         {/* Body section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-52 items-center justify-around">
+        <div className="grid mx-w-sm:grid-cols-1 md:grid-cols-3  gap-52 items-center justify-around">
           {ProductsData.map((data) => (
             <div
               data-aos="zoom-in"

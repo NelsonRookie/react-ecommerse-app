@@ -32,7 +32,7 @@ const ImageList = [
 
 export default function Hero({ handleOrderPopUp }) {
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     speed: 800,
@@ -50,11 +50,11 @@ export default function Hero({ handleOrderPopUp }) {
       {/* Background pattern */}
 
       {/* Hero section */}
-      <div className="container pb-8 sm:pb-12 rounded-lg mx-auto">
+      <div className="container sm:py-3 mx-w-sm:p-3 md:pb-12 rounded-lg mx-auto">
         <Slider {...settings}>
           {ImageList.map((data) => (
             <div key={data.id}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-5">
+              <div className="grid grid-cols-1 mx-w-sm:grid-cols-2 sm:items-center sm:justify-center items-center gap-5 md:grid-cols-2">
                 {/* Text section */}
                 <div className="flex flex-col justify-center gap-4 text-center sm:text-left px-4 sm:px-8 order-2 sm:order-1">
                   <h1
@@ -79,7 +79,7 @@ export default function Hero({ handleOrderPopUp }) {
                     data-aos="fade-up"
                     data-aos-duration="700"
                     data-aos-delay="300"
-                    className="mt-6 sm:w-[20%] bg-gradient-to-r from-light-primary to-light-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full"
+                    className="mt-6 sm:w-[20%] md:w-[30%] bg-gradient-to-r from-light-primary to-light-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full "
                   >
                     Order Now
                   </button>

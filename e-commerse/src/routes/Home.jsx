@@ -32,7 +32,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-dark-background dark:text-dark-text duration-200">
+    <div className="bg-white dark:bg-dark-background dark:text-dark-text duration-200 ">
       <Navbar handleOrderPopUp={handleOrderPopUp} />
       <Hero handleOrderPopUp={handleOrderPopUp} />
       <Products />

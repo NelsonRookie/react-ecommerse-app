@@ -53,12 +53,12 @@ export default function Testimonials() {
         {/* Testimonial cards */}
         <div
           data-aos="zoom-in"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid mx-w-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 "
         >
           {testimonialData.map((data) => (
             <div
               key={data.id}
-              className="flex flex-col gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl dark:bg-gray-800 bg-dark-primary/10 relative"
+              className="flex flex-col gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl dark:bg-gray-800 bg-dark-primary/10 border dark:border-slate-500 relative"
             >
               <div className="mb-4">
                 <img

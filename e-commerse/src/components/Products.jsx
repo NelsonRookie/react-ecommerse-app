@@ -78,7 +78,7 @@ export default function Products() {
         </div>
         {/* Body section */}
         <div>
-          <div className="grid grid-cols-1 gap-12 sm:grid-cols-6 md:grid-cols-2 lg:grid-cols-6 place-items-center ">
+          <div className="grid grid-cols-2 gap-12  md:grid-cols-4  xl:grid-cols-6 place-items-center ">
             {/* Card section */}
             {ProductsData.map((data) => (
               <div
@@ -115,7 +115,7 @@ export default function Products() {
           </div>
           {/*  view all button*/}
           <div className="sm:mt-10 flex justify-center">
-            <button className="text-center mt-10 cursor-pointer bg-light-primary text-white py-1 px-5 rounded-md">
+            <button className="text-center mt-10 cursor-pointer bg-light-primary text-white py-1 px-5 rounded-md hover:opacity-70">
               View All
             </button>
           </div>

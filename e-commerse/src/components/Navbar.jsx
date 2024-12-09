@@ -58,7 +58,7 @@ export default function Navbar({ handleOrderPopUp }) {
               placeholder="Search...."
               className={`w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-slate-500 ${
                 isDarkMode
-                  ? "dark:bg-dark-muted dark:text-dark-text"
+                  ? "dark:bg:white dark:text-slate-950"
                   : "bg-white text-gray-800"
               }`}
             />
@@ -76,7 +76,7 @@ export default function Navbar({ handleOrderPopUp }) {
               onClick={handleOrderPopUp}
               className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 isDarkMode
-                  ? "dark:bg-dark-secondary text-dark-text"
+                  ? "dark:bg-orange-300 text-slate-950"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               } group-hover:w-[120px] w-[50px] overflow-hidden`}
             >
@@ -86,7 +86,7 @@ export default function Navbar({ handleOrderPopUp }) {
               <IoCartOutline
                 size={24}
                 className={`absolute text-xl drop-shadow-sm cursor-pointer transition-transform duration-300 ${
-                  isDarkMode ? " text-dark-text" : "text-gray-700"
+                  isDarkMode ? " text-slate-950" : "text-gray-700"
                 } group-hover:translate-x-14 translate-x-0`}
               />
             </button>
@@ -116,7 +116,7 @@ export default function Navbar({ handleOrderPopUp }) {
       <section className="dark:bg-slate-100 dark:text-slate-950">
         {/* Lower navigation */}
         <div data-aos="zoom-in">
-          <ul className="hidden sm:flex item-center justify-center gap-20 p-5 font-semibold ">
+          <ul className="hidden max-w-sm:hidden md:flex item-center justify-center gap-20 p-5 font-semibold ">
             {menu.map((nav) => (
               <li
                 key={nav.id}

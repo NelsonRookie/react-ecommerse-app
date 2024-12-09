@@ -22,17 +22,17 @@ export default function Footer() {
       <div className="container grid grid-cols-1 mx-auto">
         <div
           data-aos="zoom-in"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-12 text-center md:text-left"
+          className="grid mx-w-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-12 text-center md:text-left"
         >
           {/* Company Details */}
-          <div className="flex flex-col items-center md:items-start ml-10  ">
-            <div className="flex justify-center items-center gap-1">
+          <div className="flex md:flex-col md:gap-0 items-center justify-center  gap-10 px-10 md:items-start ">
+            <div className="flex flex-col justify-center items-center  ">
               <img src={logo} alt="Logo" className="h-12 w-12" />
-              <h1 className="sm:text-2xl text-xl font-semibold text-white flex items-center justify-center sm:justify-start gap-3">
+              <h1 className="sm:text-2xl text-xl font-semibold text-white m-0">
                 EzzyBuy
               </h1>
             </div>
-            <p className="text-sm sm:text-sm antialiased mt-5 dark:text-dark-muted  text-gray-200 leading-relaxed">
+            <p className="text-sm sm:text-sm antialiased text-justify  dark:text-dark-muted  text-gray-200 leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
               doloremque dolor aut veniam incidunt sit rem possimus, labore
               cumque minima perspiciatis.
@@ -44,7 +44,7 @@ export default function Footer() {
             <h2 className="text-xl font-semibold text-gray-200 mb-4  ">
               Quick Links
             </h2>
-            <ul className="flex flex-col gap-3 items-center sm:items-start">
+            <ul className="flex md:flex-col gap-3 items-center sm:items-start">
               {footerLinks.map((link) => (
                 <li
                   key={link.id}
