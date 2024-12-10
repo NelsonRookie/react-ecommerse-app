@@ -13,20 +13,36 @@ import { MdOutlineSearch } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { RxCaretDown } from "react-icons/rx";
 import { RxCaretUp } from "react-icons/rx";
+import { FiMinus } from "react-icons/fi";
+import { MdOutlineAdd } from "react-icons/md";
+import { IoCloseOutline } from "react-icons/io5";
 
-export default function Navbar({ handleOrderPopUp }) {
+export default function Navbar({ cartItems, counter }) {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     return localStorage.getItem("isDarkMode") === "true";
   });
 
   const [isHovered, setIsHovered] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [quantity, setQuantity] = useState(0);
 
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
   const handleToggle = () => {
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
       localStorage.setItem("isDarkMode", newMode);
       return newMode;
     });
+  };
+
+  const handleAddQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecreaseQuantity = () => {
+    setQuantity(quantity - 1);
   };
 
   useEffect(() => {
@@ -73,7 +89,8 @@ export default function Navbar({ handleOrderPopUp }) {
           {/* Ordering */}
           <div className="relative flex items-center group">
             <button
-              onClick={handleOrderPopUp}
+              // onClick={handleCartPopUp}
+              onClick={toggleDrawer}
               className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 isDarkMode
                   ? "dark:bg-orange-300 text-slate-950"
@@ -91,6 +108,11 @@ export default function Navbar({ handleOrderPopUp }) {
               />
             </button>
           </div>
+          {counter > 0 && (
+            <span className="absolute  top-3 right-24  w-5 h-5 flex items-center justify-center bg-red-500 rounded-full text-white font-semibold text-xs ">
+              {counter}
+            </span>
+          )}
 
           {/* Theme Toggle Button */}
           <button
@@ -136,9 +158,9 @@ export default function Navbar({ handleOrderPopUp }) {
                   Trending Products
                 </p>
                 {isHovered ? (
-                  <RxCaretUp size={25} />
-                ) : (
                   <RxCaretDown size={25} />
+                ) : (
+                  <RxCaretUp size={25} />
                 )}
               </div>
               {/* Dropdown List */}
@@ -159,10 +181,73 @@ export default function Navbar({ handleOrderPopUp }) {
           </ul>
         </div>
       </section>
+      {/* Drawer */}
+      <div
+        className={`fixed z-10 top-0 right-0 h-full w-[350px] bg-gray-100 shadow-lg dark:bg-dark-background transform transition-transform duration-300 ${
+          isDrawerOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center p-4 bg-gray-200 dark:bg-gray-800">
+          <h2 className="font-bold text-lg">Your Orders</h2>
+          <button
+            onClick={toggleDrawer}
+            className="text-gray-600 dark:text-gray-300 hover:text-slate-950"
+          >
+            <IoCloseOutline size={25} />
+          </button>
+        </div>
+        <div className="">
+          {cartItems.map((product) => (
+            <div key={product.id} className="container border-b ">
+              <div className="grid grid-cols-3 items-center p-5 ">
+                <input type="checkbox" />
+                <img src={product.img} alt="Product" className="w-40 h-40" />
+                <div className="flex flex-col w-full">
+                  <p className="font-bold">{product.title}</p>
+                  <strong className="text-red-600 text-xs font-bold ">
+                    {product.price}
+                  </strong>
+                </div>
+              </div>
+              <div className="quantity flex gap-2 items-center justify-end">
+                <div className="border border-slate-400 rounded-md flex gap-3 p-1 ">
+                  <button
+                    onClick={handleDecreaseQuantity}
+                    className="border-r border-slate-400 p-1"
+                  >
+                    <strong className="textl">
+                      <FiMinus size={15} />
+                    </strong>
+                  </button>
+                  <span className="font-bold">{quantity}</span>
+                  <button
+                    onClick={handleAddQuantity}
+                    className="border-l border-slate-400 p-1"
+                  >
+                    <span>
+                      <MdOutlineAdd size={15} />
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div className="buttons flex items-center justify-end gap-2 mt-2 mb-2">
+                <button className="p-2  bg-sky-500 font-bold text-sm hover:opacity-80 text-slate-50">
+                  Buy Now
+                </button>
+                <button className="p-2  bg-red-500 font-bold text-sm hover:opacity-80 text-slate-50">
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </nav>
   );
 }
 
 Navbar.propTypes = {
   handleOrderPopUp: PropTypes.any,
+  counter: PropTypes.any,
+  cartItems: PropTypes.any,
 };

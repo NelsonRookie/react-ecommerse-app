@@ -2,8 +2,18 @@ import { IoCloseOutline } from "react-icons/io5";
 import { BsCartPlusFill } from "react-icons/bs";
 import PropTypes from "prop-types";
 
-export default function PopUpForm({ orderPopUp, setOrderPopUp, product }) {
-  if (!product) return null; // Prevent rendering if no product is selected
+export default function PopUpForm({
+  orderPopUp,
+  setOrderPopUp,
+  product,
+  addToCart,
+}) {
+  if (!product) return null;
+
+  const handleAddToCart = (product) => {
+    addToCart(product); // Add product to cart
+    setOrderPopUp(false); // Close modal
+  };
 
   return (
     <>
@@ -37,7 +47,7 @@ export default function PopUpForm({ orderPopUp, setOrderPopUp, product }) {
               {/* Add to Cart Button */}
               <div className="flex w-full mt-5 gap-1">
                 <button
-                  onClick={() => alert("Feature is not yet available")}
+                  onClick={() => handleAddToCart(product)}
                   className="w-full gap-2 flex items-center rounded-md justify-center bg-gradient-to-r from-light-primary to-light-secondary hover:opacity-80 duration-200 text-slate-50 py-3 px-4"
                 >
                   <BsCartPlusFill size={20} />
@@ -57,5 +67,6 @@ export default function PopUpForm({ orderPopUp, setOrderPopUp, product }) {
 PopUpForm.propTypes = {
   orderPopUp: PropTypes.bool.isRequired,
   setOrderPopUp: PropTypes.func.isRequired,
-  product: PropTypes.object, // Accept the selected product
+  product: PropTypes.object,
+  addToCart: PropTypes.func.isRequired,
 };

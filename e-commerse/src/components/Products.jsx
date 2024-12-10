@@ -61,7 +61,7 @@ export default function Products() {
   ];
 
   return (
-    <div className="mt-14 mb-20 ">
+    <div className="mt-14 mb-20">
       <div className="container flex items-center flex-col mx-auto sm:mx-auto">
         {/* Header section */}
         <div className="text-center mb-10 max-w-[600px]">
@@ -69,7 +69,7 @@ export default function Products() {
             Top Selling Products for you
           </p>
           <h1 className="text-3xl font-bold">Products</h1>
-          <p className="text-xs text-gray-500 ">
+          <p className="text-xs text-gray-500">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Consequuntur eaque mollitia numquam animi, labore ratione unde eos a
             corporis minima! Dolor velit non dolorem optio facere autem officia
@@ -78,22 +78,23 @@ export default function Products() {
         </div>
         {/* Body section */}
         <div>
-          <div className="grid grid-cols-2 gap-12  md:grid-cols-4  xl:grid-cols-6 place-items-center ">
+          <div className="grid grid-cols-2 gap-12 md:grid-cols-4 xl:grid-cols-6 place-items-center">
             {/* Card section */}
             {ProductsData.map((data) => (
               <div
                 key={data.id}
                 className="space-y-3"
                 data-aos-delay={data.aosDelay}
-                data-aos="fade-up"
+                data-aos="zoom-in"
               >
-                <img
-                  data-aos-delay={data.aosDelay}
-                  data-aos="fade-up"
-                  src={data.img}
-                  alt={data.id}
-                  className="h-[100px] w-[150px] sm:min-w-[200px] sm:min-h-[200px] object-cover rounded-md bg-slate-500 cursor-pointer"
-                />
+                <div className="relative group">
+                  {/* Add hover effect to the image */}
+                  <img
+                    src={data.img}
+                    alt={data.id}
+                    className="h-[100px] w-[150px] sm:min-w-[200px] sm:min-h-[200px] object-cover rounded-md bg-slate-500 cursor-pointer transform transition-transform duration-300 group-hover:scale-105 group-hover:shadow-lg"
+                  />
+                </div>
                 <div
                   data-aos-delay={data.aosDelay}
                   data-aos="fade-up"
@@ -113,7 +114,7 @@ export default function Products() {
               </div>
             ))}
           </div>
-          {/*  view all button*/}
+          {/* View all button */}
           <div className="sm:mt-10 flex justify-center">
             <button className="text-center mt-10 cursor-pointer bg-light-primary text-white py-1 px-5 rounded-md hover:opacity-70">
               View All

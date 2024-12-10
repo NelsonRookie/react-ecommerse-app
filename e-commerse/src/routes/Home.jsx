@@ -18,6 +18,11 @@ import PopUpForm from "../components/PopUpForm";
 export default function Home() {
   const [orderPopUp, setOrderPopUp] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null); // For the clicked product
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleCounter = (product) => {
+    setCartItems((prev) => [...prev, product]); // Add product to cart
+  };
 
   const handleOrderPopUp = (product) => {
     setSelectedProduct(product); // Set the product data
@@ -36,8 +41,8 @@ export default function Home() {
 
   return (
     <div className="bg-white dark:bg-dark-background dark:text-dark-text duration-200">
-      <Navbar handleOrderPopUp={handleOrderPopUp} />
-      <Hero handleOrderPopUp={handleOrderPopUp} />
+      <Navbar cartItems={cartItems} counter={cartItems.length} />
+      <Hero />
       <Products />
       <TopProducts handleOrderPopUp={handleOrderPopUp} /> {/* Pass handler */}
       <Banner />
@@ -48,7 +53,9 @@ export default function Home() {
       <PopUpForm
         orderPopUp={orderPopUp}
         setOrderPopUp={setOrderPopUp}
-        product={selectedProduct} // Pass selected product to modal
+        product={selectedProduct}
+        handleCartItems={handleCounter}
+        addToCart={handleCounter} // Pass selected product to modal
       />
       <Footer />
     </div>

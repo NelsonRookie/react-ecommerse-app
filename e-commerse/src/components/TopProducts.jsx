@@ -58,6 +58,7 @@ export default function TopProducts({ handleOrderPopUp }) {
                 <p className="text-gray-500 group-hover:text-white duration-300 text-sm line-clamp-2">
                   {data.description}
                 </p>
+
                 <button
                   onClick={() => handleOrderPopUp(data)} // Pass product data to the handler
                   className="mt-5 bg-light-primary hover:scale-105 duration-200 text-white text-base py-2 px-7 rounded-full"
